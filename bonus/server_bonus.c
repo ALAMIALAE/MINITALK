@@ -6,7 +6,7 @@
 /*   By: aben-dri <aben-dri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 06:35:39 by aben-dri          #+#    #+#             */
-/*   Updated: 2025/03/27 21:18:45 by aben-dri         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:40:55 by aben-dri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	ft_putnbr(int n)
 {
 	if (n == -2147483648)
 	{
-		write(1, "-2147483648", 11);
+		write(1, "-2147483648", 12);
 		return ;
 	}
 	if (n < 0)
@@ -67,7 +67,7 @@ int	main(void)
 {
 	struct sigaction	sa;
 
-	write(1, "Server PID :\n", 12);
+	write(1, "Server PID :\n", 14);
 	ft_putnbr(getpid());
 	write(1, "\n", 1);
 	sa.sa_sigaction = signal_handler;
@@ -75,7 +75,7 @@ int	main(void)
 	if (sigemptyset(&sa.sa_mask) == -1 || sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 	{
-		write(2, "Error: Signal setup failed\n", 27);
+		write(2, "Error: Signal setup failed\n", 28);
 		exit(1);
 	}
 	while (1)

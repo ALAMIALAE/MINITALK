@@ -6,7 +6,7 @@
 /*   By: aben-dri <aben-dri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 06:35:25 by aben-dri          #+#    #+#             */
-/*   Updated: 2025/03/27 20:48:35 by aben-dri         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:41:28 by aben-dri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,20 +89,25 @@ int	main(int ac, char **av)
 	__pid_t	pid;
 
 	if (ac != 3)
-		return (write(2, "Invalid Number Of Arguments\n", 28), 1);
+		return (write(2, "Invalid Number Of Arguments\n", 29), 1);
 	if (!valid_pid(av[1]))
-		return (write(2, "Invalid PID\n", 12), 1);
+		return (write(2, "Invalid PID\n", 13), 1);
 	if ((signal(SIGUSR1, flag_handler)) == SIG_ERR)
 	{
-		write(2, "signal failed\n", 14);
+		write(2, "signal failed\n", 15);
 		exit(1);
 	}
 	pid = ft_atoi(av[1]);
+	if (pid == -1)
+	{
+		write(2, "Error\n", 7);
+		exit(1);
+	}
 	message = av[2];
 	while (*message)
 	{
 		send_char(pid, *message);
 		message++;
 	}
-	write(1, "\033[35mThe message was succefully received \033[0m\n", 45);
+	write(1, "\033[35mThe message was succefully received \033[0m\n", 47);
 }

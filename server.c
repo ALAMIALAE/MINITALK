@@ -6,7 +6,7 @@
 /*   By: aben-dri <aben-dri@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 12:31:11 by aben-dri          #+#    #+#             */
-/*   Updated: 2025/03/27 21:56:14 by aben-dri         ###   ########.fr       */
+/*   Updated: 2025/04/02 23:48:00 by aben-dri         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	main(void)
 	if (sigemptyset(&sa.sa_mask) == -1 || sigaction(SIGUSR1, &sa, NULL) == -1
 		|| sigaction(SIGUSR2, &sa, NULL) == -1)
 	{
-		write(2, "Error: Signal setup failed\n", 27);
+		write(2, "Error: Signal setup failed\n", 28);
 		exit(1);
 	}
 	while (1)
